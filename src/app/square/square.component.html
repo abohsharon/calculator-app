@@ -1,0 +1,36 @@
+<div class="">
+
+    
+    <div class="bg-white min-w-[30%] w-[30%] max-h-fit h-[10%] m-auto rounded-lg p-3 mt-20">
+        <h3 class="w-full mx-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-2xl font-semibold text-white text-center rounded px-2 mb-2">TODO LIST</h3>
+        <div class="flex justify-between gap-3 mb-4">
+            <div class="w-3/4">
+                <input type="text" placeholder="Enter Here..." class="col-span-2 border-b-gray-200 border-b-2 pb-3 p-3 w-full" [(ngModel)]="todoValue">
+            <span *ngIf="isRequired" class="text-orange-800 text-sm">Please Enter A Text</span>
+            </div>
+            <button class=" bg-violet-400 w-1/4 text-xl" (click)="addTodo()">+</button>
+        </div>
+        <div>
+            <h5 class="bg-purple-300 w-full mx-1 my-2 mb-2 px-2 rounded">To-Do List</h5>
+            <div class="flex justify-between mb-2 border-b-gray-200 border-b-2 pb-3" *ngFor="let todo of todoList; let i=index">
+                <input type="checkbox" name="" id="" class="w-10" [(ngModel)]="todo.value" (ngModelChange)="changeTodo(i)">
+                <p class="">{{todo.content}}</p>
+                <button class="bg-pink-700 hover:bg-pink-800 w-10 rounded-md" (click)="delTodo(i)">X</button>
+            </div>
+
+            <div *ngIf="finishedList.length > 0" >
+                <h5 class="bg-purple-300 w-full mx-1 my-2 mb-2 px-2 rounded">Finished List</h5>
+                <div class=" flex justify-between mb-2 border-b-gray-200 border-b-2 pb-3 line-through" *ngFor="let todo of finishedList; let i=index">
+                    <input type="checkbox" name="" id="" class="w-10" [(ngModel)]="todo.value" (ngModelChange)="changeFinished(i)">
+                    <p class="">{{todo.content}}</p>
+                </div>
+            </div>
+
+     
+        </div>
+    </div>
+</div>
+
+
+
+
